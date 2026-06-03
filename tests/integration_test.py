@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""defMonV Phase 1 integration test.
+"""defMONV Phase 1 integration test.
 
-Boots the packed defMonV .d64 in asid-vice (via defmon-driver), starts playback,
+Boots the packed defMONV .d64 in asid-vice (via defmon-driver), starts playback,
 and proves the user port ($DD01) now carries MIDI real-time bytes instead of the
 ScannerBoy levels:
 

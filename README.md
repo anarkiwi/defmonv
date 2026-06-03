@@ -1,10 +1,15 @@
-# defMonV
+# defMONV
 
-defMonV patches [defMON](https://defmon.vandervecken.com) — the C64 music
+defMONV patches [defMON](https://defmon.vandervecken.com) — the C64 music
 tracker — to drive a [Vessel](https://github.com/anarkiwi/vessel) MIDI interface
 on the user port, replacing defMON's "ScannerBoy" sync. **Phase 1** makes defMON
 a **MIDI clock master**: it transmits MIDI Clock, Start and Stop over real MIDI
 out as you play.
+
+![defMONV seqED screen](docs/defmonv-seqed.png)
+
+See [docs/USAGE.md](docs/USAGE.md) for what's on screen and the transport keys
+(F3 = play/Start, F7 = stop/Stop, Clock streams while playing).
 
 The build takes a pinned fork of the
 [undefmon](https://github.com/anarkiwi/undefmon) Kick Assembler disassembly
@@ -19,7 +24,7 @@ defMON's ScannerBoy sync bit-bangs CIA2 port B (`$DD01`) from the player tick:
 the user port transmits every byte written to `$DD01` (in output mode) as MIDI,
 so the patch replaces those writes with MIDI real-time messages:
 
-| defMON site | ScannerBoy | defMonV |
+| defMON site | ScannerBoy | defMONV |
 |-------------|-----------|---------|
 | `$0B2E` clock-high (per main tick) | write `$0C` | **MIDI Clock `$F8`** |
 | `$0B46` clock-low (per sub-frame) | write `$04` | suppressed (no stray byte) |
@@ -72,5 +77,5 @@ verifies on every push/PR and uploads the d64 as a CI artifact.
 
 `vendor/defmon.asm` is a verbatim copy of undefmon at the commit in
 [`vendor/UNDEFMON_COMMIT`](vendor/UNDEFMON_COMMIT); it round-trips byte-for-byte
-to the original defMON image, so the only changes in defMonV are this patch.
-defMON is the work of its authors; defMonV is an independent patch.
+to the original defMON image, so the only changes in defMONV are this patch.
+defMON is the work of its authors; defMONV is an independent patch.

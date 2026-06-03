@@ -1,4 +1,4 @@
-# defMonV - patch defMON for Vessel MIDI clock, assemble, exomize, build a d64.
+# defMONV - patch defMON for Vessel MIDI clock, assemble, exomize, build a d64.
 #
 #   make            build defmonv.d64 (the release artifact)
 #   make verify     assemble + assert the patch sites (no emulator)
