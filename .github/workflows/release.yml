@@ -22,16 +22,6 @@ jobs:
           sudo apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y vice build-essential curl
 
-      - name: Install Kick Assembler
-        run: |
-          mkdir -p "$HOME/kickass"
-          # theweb.dk rate-limits datacenter IPs (intermittent 415); retry.
-          curl -fsSL -A "Mozilla/5.0" --retry 6 --retry-all-errors --retry-delay 15 \
-            http://theweb.dk/KickAssembler/KickAssembler.zip -o /tmp/kickass.zip
-          unzip -q /tmp/kickass.zip -d "$HOME/kickass"
-          jar="$(find "$HOME/kickass" -name KickAss.jar | head -1)"
-          echo "KICKASS_JAR=$jar" >> "$GITHUB_ENV"
-
       - name: Build exomizer 3.1.2
         run: |
           curl -fsSL https://bitbucket.org/magli143/exomizer/get/3.1.2.tar.gz \

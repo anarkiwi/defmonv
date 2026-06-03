@@ -38,9 +38,9 @@ in place; see [`tools/patch_vessel.py`](tools/patch_vessel.py) and
 
 ## Build
 
-Requires `java` + [Kick Assembler](http://theweb.dk/KickAssembler)
-(`KICKASS_JAR`), [`exomizer`](https://bitbucket.org/magli143/exomizer) 3.1.2,
-`c1541` (VICE), and Python 3.
+Requires `java` (Kick Assembler v5.25 is vendored at `vendor/KickAss.jar`),
+[`exomizer`](https://bitbucket.org/magli143/exomizer) 3.1.2, `c1541` (VICE), and
+Python 3.
 
 ```
 make            # patch -> assemble -> verify -> exomize -> defmonv.d64

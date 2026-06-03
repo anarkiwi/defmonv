@@ -7,7 +7,7 @@
 #
 # Tools: java + Kick Assembler (KICKASS_JAR), exomizer, c1541 (VICE), python3.
 
-KICKASS_JAR ?= /usr/local/kickass/KickAss.jar
+KICKASS_JAR ?= vendor/KickAss.jar
 JAVA        ?= java
 EXOMIZER    ?= exomizer
 C1541       ?= c1541
