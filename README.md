@@ -26,6 +26,10 @@ so the patch replaces those writes with MIDI real-time messages:
 | `$0CCA` `stop_playback` | write `$00` | **MIDI Stop `$FC`** |
 | `$81E5` play-from-start (F3) tail | — | **MIDI Start `$FA`** (stub at `$E787`) |
 
+It also overwrites defMON's on-screen build stamp (`$0FF2`, normally the date
+`20201008`) with **`DEFMONV`**, so the seqED status line makes it obvious you are
+running the Vessel build.
+
 defMON already configures the user port for output (`$DD03=$FF`, PA2 high) at
 cold boot and keeps KERNAL banked out (`$01=$35`), so no port setup is needed
 and the Start stub lives just above the image. The patch is byte-size-preserving

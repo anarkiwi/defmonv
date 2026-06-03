@@ -49,6 +49,15 @@ REPLACEMENTS = [
         "                           jmp  statusline_print_bare_return    // $81E5",
         "                           jmp  defmonv_start    // $81E5  [defMonV: MIDI Start]",
     ),
+    (
+        # splash_build_date_string ($0FF2): post_load_startup prints the first 8
+        # screen codes to the seqED status line (the build date '20201008').
+        # Replace those 8 with 'DEFMONV ' so the user sees the variant name;
+        # leave the (undisplayed) 6 build-time digits.
+        "version stamp $0FF2: show DEFMONV on the seqED status line",
+        "        .byte $32, $30, $32, $30, $31, $30, $30, $38, $32, $32, $30, $31, $34, $33    // $0FF2",
+        "        .byte $04, $05, $06, $0D, $0F, $0E, $16, $20, $32, $32, $30, $31, $34, $33    // $0FF2  [defMonV: 'DEFMONV ' version stamp]",
+    ),
 ]
 
 # Appended at the end, in RAM just above the image ($0800-$E786). Reached only

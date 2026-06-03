@@ -14,6 +14,7 @@ CHECKS = [
     ("stop: lda #$FC / sta $DD01", 0x0CCA, "a9 fc 8d 01 dd"),
     ("play-from-start: jmp $E787", 0x81E5, "4c 87 e7"),
     ("defmonv_start: lda #$FA / sta $DD01 / jmp", 0xE787, "a9 fa 8d 01 dd 4c ?? ??"),
+    ("version stamp: 'DEFMONV ' screen codes", 0x0FF2, "04 05 06 0d 0f 0e 16 20"),
 ]
 
 
