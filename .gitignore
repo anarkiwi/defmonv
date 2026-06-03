@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# defMonV build outputs (d64 is a release asset built by CI)
+/build/
+/defmonv.d64
+/defmonv-*.d64
+/magli143-exomizer-*/
+__pycache__/
