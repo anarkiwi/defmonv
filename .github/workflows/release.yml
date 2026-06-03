@@ -35,7 +35,7 @@ jobs:
           cp defmonv.d64 "defmonv-${GITHUB_REF_NAME}.d64"
 
       - name: Publish release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: defmonv-${{ github.ref_name }}.d64
           fail_on_unmatched_files: true
