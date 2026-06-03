@@ -21,7 +21,8 @@ jobs:
         run: |
           mkdir -p "$HOME/kickass"
           # theweb.dk 415s the default curl User-Agent (pose as a browser)
-          curl -fsSL -A "Mozilla/5.0" \
+          # theweb.dk rate-limits datacenter IPs (intermittent 415); retry.
+          curl -fsSL -A "Mozilla/5.0" --retry 6 --retry-all-errors --retry-delay 15 \
             http://theweb.dk/KickAssembler/KickAssembler.zip -o /tmp/kickass.zip
           unzip -q /tmp/kickass.zip -d "$HOME/kickass"
           jar="$(find "$HOME/kickass" -name KickAss.jar | head -1)"
