@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static verification of the assembled defMonV image: assert every Phase 1
+"""Static verification of the assembled defMONV image: assert every Phase 1
 patch site holds the expected bytes. Runs in CI with no emulator, so a bad or
 drifted patch fails the build.
 

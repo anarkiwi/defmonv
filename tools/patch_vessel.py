@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply the defMonV Phase 1 (MIDI clock master) patch to a vendored defMON
+"""Apply the defMONV Phase 1 (MIDI clock master) patch to a vendored defMON
 Kick Assembler source.
 
 defMON's "ScannerBoy" sync bit-bangs CIA2 port B ($DD01) from the player tick:
@@ -32,22 +32,22 @@ REPLACEMENTS = [
     (
         "clock-high $0B2E: MIDI Clock ($F8)",
         "l_5:                       lda  #$0C    // $0B2E",
-        "l_5:                       lda  #$F8    // $0B2E  [defMonV: MIDI Clock]",
+        "l_5:                       lda  #$F8    // $0B2E  [defMONV: MIDI Clock]",
     ),
     (
         "clock-low $0B46: suppress ScannerBoy write",
         "                           sta  CIA2_PRB    // $0B46",
-        "                           .byte $EA, $EA, $EA    // $0B46  [defMonV: suppress clock-low]",
+        "                           .byte $EA, $EA, $EA    // $0B46  [defMONV: suppress clock-low]",
     ),
     (
         "stop $0CCA: MIDI Stop ($FC)",
         "                           lda  #$00    // $0CCA",
-        "                           lda  #$FC    // $0CCA  [defMonV: MIDI Stop]",
+        "                           lda  #$FC    // $0CCA  [defMONV: MIDI Stop]",
     ),
     (
         "play-from-start $81E5: redirect to MIDI Start stub",
         "                           jmp  statusline_print_bare_return    // $81E5",
-        "                           jmp  defmonv_start    // $81E5  [defMonV: MIDI Start]",
+        "                           jmp  defmonv_start    // $81E5  [defMONV: MIDI Start]",
     ),
     (
         # splash_build_date_string ($0FF2): post_load_startup prints the first 8
@@ -56,7 +56,7 @@ REPLACEMENTS = [
         # leave the (undisplayed) 6 build-time digits.
         "version stamp $0FF2: show DEFMONV on the seqED status line",
         "        .byte $32, $30, $32, $30, $31, $30, $30, $38, $32, $32, $30, $31, $34, $33    // $0FF2",
-        "        .byte $04, $05, $06, $0D, $0F, $0E, $16, $20, $32, $32, $30, $31, $34, $33    // $0FF2  [defMonV: 'DEFMONV ' version stamp]",
+        "        .byte $04, $05, $06, $0D, $0F, $0E, $16, $20, $32, $32, $30, $31, $34, $33    // $0FF2  [defMONV: 'DEFMONV ' version stamp]",
     ),
 ]
 
@@ -65,7 +65,7 @@ REPLACEMENTS = [
 APPEND = """
 
 // ──────────────────────────────────────────────────────────────────────
-// defMonV Vessel support (Phase 1: MIDI clock master)
+// defMONV Vessel support (Phase 1: MIDI clock master)
 // ──────────────────────────────────────────────────────────────────────
 // Tail of the F3 "play from start" handler: emit MIDI Start, then continue to
 // the original status-line repaint.

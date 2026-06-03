@@ -1,4 +1,4 @@
-# defMonV Phase 2 — external MIDI clock (Vessel as slave)
+# defMONV Phase 2 — external MIDI clock (Vessel as slave)
 
 Phase 1 makes defMON a MIDI clock **master** (it sends Clock/Start/Stop). Phase 2
 is the inverse: drive defMON's playback from an **incoming** MIDI clock via
@@ -40,7 +40,7 @@ one-tick-per-clock; defMON's sub-frame model makes Phase 2 materially harder.
 ## Relationship to Phase 1
 
 Master (Phase 1) and slave (Phase 2) are mutually exclusive at run time — defMON
-is either the clock source or follows an external clock. A finished defMonV would
+is either the clock source or follows an external clock. A finished defMONV would
 expose them as a mode switch rather than running both at once.
 
 ## Effort / risk
